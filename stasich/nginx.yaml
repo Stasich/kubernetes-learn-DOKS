@@ -51,7 +51,8 @@ data:
       listen       80 default_server;
       index index.php;
       server_name  _;
-
+      default_type text/plain;
+    
       location / {
           return 200 '$hostname\n';
       }

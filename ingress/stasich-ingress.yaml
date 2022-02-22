@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stasich-nginx
+  namespace: ingress
+spec:
+  type: ExternalName
+  externalName: nginx.stasich.svc
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: stasich-ingress
+  namespace: ingress
+spec:
+  rules:
+    - host: stasich.stasich.space
+      http:
+        paths:
+          - backend:
+              serviceName: stasich-nginx
+              servicePort: 80
